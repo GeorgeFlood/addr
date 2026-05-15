@@ -5,12 +5,15 @@ const router = Router();
 router.get('/v1/address/', async (req, res) => {
   try {
     const postcode = req.query.postcode;
-    const data = await fetchAddress(postcode);
+
+    const response = await fetchAddress(postcode);
+    const results = response.results;
+    const addresses = results.map(item => item.DPA.ADDRESS);
 
     res.status(200).json({
       status: 'successful',
       data: {
-        data,
+        addresses,
       },
     });
   } catch (err) {

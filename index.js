@@ -7,10 +7,12 @@
 // }
 
 const API_KEY = process.env.OS_DATA_API_Key;
-
+console.log(`API: ${API_KEY}`);
 const fetchAddress = async postcode => {
+  const cleaned = postcode.replace(/\s+/g, '');
+
   const response = await fetch(
-    `https://api.os.uk/search/places/v1/${postcode}?key=${API_KEY}`,
+    `https://api.os.uk/search/places/v1/postcode?postcode=${cleaned}&key=${API_KEY}`,
   );
 
   if (!response.ok) {
