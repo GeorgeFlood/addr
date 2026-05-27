@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import lookupRouter from './lookup.js';
+import lookupRouter from './addressRoutes.js';
 const PORT = Number(process.env.PORT) || 3000;
 
 const app = express();

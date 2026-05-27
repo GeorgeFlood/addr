@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import fetchAddress from './index.js';
+import fetchAddress from './osPlaces.js';
 const router = Router();
 
 router.get('/v1/address/', async (req, res) => {
