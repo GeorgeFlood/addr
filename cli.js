@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { input, select } from '@inquirer/prompts';
+import clipboard from 'clipboardy';
 import fetchAddress from './osPlaces.js';
 
 const postcode = process.argv[2] ?? (await input({ message: 'Postcode?' }));
@@ -17,5 +18,7 @@ const chosen = await select({
   message: 'Choose an address',
   choices: addresses.map(addr => ({ name: addr, value: addr })),
 });
+
+await clipboard.write(chosen);
 
 console.log('Selected:', chosen);
