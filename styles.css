@@ -55,8 +55,8 @@ main {
 }
 
 .logo {
-  height: 20rem;
-  width: 20rem;
+  height: 30rem;
+  width: 30rem;
   animation: drop 0.5s 0.4s ease both;
 }
 
@@ -103,12 +103,6 @@ h1 {
     box-shadow 0.18s ease;
   opacity: 0;
   animation: rise 0.6s 0.28s ease forwards;
-}
-.search:focus-within {
-  border-color: var(--ink);
-  box-shadow:
-    var(--shadow),
-    0 0 0 0.4rem rgba(47, 107, 255, 0.16);
 }
 
 .search input {
@@ -177,11 +171,11 @@ button.find:disabled {
 
 /* result */
 .result {
-  margin-top: 2rem;
+  margin-top: -1rem;
   text-align: left;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 0 0 var(--radius) var(--radius);
   padding: 2.2rem 2.4rem;
   box-shadow: var(--shadow);
   opacity: 0;
@@ -225,6 +219,13 @@ button.find:disabled {
   font-weight: 500;
 }
 
+ul.address-ul {
+}
+
+li.address-li {
+  list-style: none;
+  margin: 20px 0;
+}
 .additional {
   margin-top: 2rem;
   padding: 1.4rem 1.6rem;

@@ -2,6 +2,7 @@ const input = document.getElementById('postcode');
 const findBtn = document.getElementById('find');
 const result = document.getElementById('result');
 const date = document.getElementById('date');
+const searchBar = document.getElementById('search');
 
 /* --- typewriter placeholder: teaches people what to type --- */
 const samples = [
@@ -38,15 +39,36 @@ function typeLoop() {
 typeLoop();
 
 /* --- uppercase + tidy spacing as they type --- */
-input.addEventListener('input', () => {
+input.addEventListener('input', async () => {
   input.value = input.value.toUpperCase().replace(/\s+/g, ' ');
 });
 
-findBtn.addEventListener('click', () => {
+/* --- find button click + creating elements to display on page.. react would of been nice. */
+findBtn.addEventListener('click', async () => {
+  result.textContent = '';
   const postcode = input.value.trim();
-  input.value = '';
+  if (!postcode) {
+    result.textContent = 'Enter a postcode';
+    return;
+  }
+  const url = `/v1/address/?postcode=${encodeURIComponent(postcode)}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const addresses = data.data.addresses;
 
-  if (!postcode) result.textContent = 'Enter a postcode';
+  const addressUL = document.createElement('ul');
+  addressUL.className = 'address-ul';
+  result.append(addressUL);
+
+  addresses.forEach(address => {
+    const addressLI = document.createElement('li');
+    addressLI.className = 'address-li';
+
+    addressLI.textContent = address;
+    addressUL.append(addressLI);
+    result.style.opacity = 1;
+    searchBar.style.borderRadius = '14px 14px 0 0';
+  });
 });
 
 /* --- getting dynamic year for footer --- */
