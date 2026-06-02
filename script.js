@@ -1,6 +1,5 @@
 const input = document.getElementById('postcode');
 const findBtn = document.getElementById('find');
-const hint = document.getElementById('hint');
 const result = document.getElementById('result');
 const date = document.getElementById('date');
 
@@ -41,6 +40,13 @@ typeLoop();
 /* --- uppercase + tidy spacing as they type --- */
 input.addEventListener('input', () => {
   input.value = input.value.toUpperCase().replace(/\s+/g, ' ');
+});
+
+findBtn.addEventListener('click', () => {
+  const postcode = input.value.trim();
+  input.value = '';
+
+  if (!postcode) result.textContent = 'Enter a postcode';
 });
 
 /* --- getting dynamic year for footer --- */

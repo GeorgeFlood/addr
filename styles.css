@@ -54,22 +54,12 @@ main {
   max-width: 52rem;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.5rem 1.1rem;
-  margin-bottom: 2.4rem;
-  opacity: 0;
-  animation: rise 0.6s 0.05s ease forwards;
+.logo {
+  height: 20rem;
+  width: 20rem;
+  animation: drop 0.5s 0.4s ease both;
 }
+
 .dot {
   width: 0.7rem;
   height: 0.7rem;
@@ -235,11 +225,60 @@ button.find:disabled {
   font-weight: 500;
 }
 
+.additional {
+  margin-top: 2rem;
+  padding: 1.4rem 1.6rem;
+  text-align: left;
+  max-width: 34rem;
+  margin-inline: auto;
+  opacity: 0;
+  animation: rise 0.6s 0.36s ease forwards;
+}
+
+.additional h3 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.list-item {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+
 footer {
   text-align: center;
   padding: 2.4rem;
   font-size: 1.3rem;
   color: #aab0bb;
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes rise {

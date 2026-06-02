@@ -8,6 +8,26 @@
     <!-- Hanken Grotesk: clean, modern, not the overused Inter/Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/img/favicon48x48.png"
+    />
+    <link rel="icon" href="/img/logo.png" />
+
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -18,9 +38,7 @@
   <body>
     <main>
       <div class="stage">
-        <span class="eyebrow"
-          ><span class="dot"></span> UK postcode lookup</span
-        >
+        <img class="logo" src="img/logo.png" />
         <h1>PostcodeFindr</h1>
         <p class="tagline">Type a UK postcode. Get the address.</p>
 
@@ -37,10 +55,15 @@
           />
           <button class="find" id="find" type="button">Find</button>
         </div>
-
-        <div class="hint" id="hint" aria-live="polite"></div>
-
         <div class="result" id="result" role="region" aria-live="polite"></div>
+
+        <div class="additional">
+          <h3>Coming soon:</h3>
+          <ul class="feature-list">
+            <li class="list-item">Chrome Extension</li>
+            <li class="list-item">CLI Download</li>
+          </ul>
+        </div>
       </div>
     </main>
 
