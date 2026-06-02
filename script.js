@@ -2,6 +2,7 @@ const input = document.getElementById('postcode');
 const findBtn = document.getElementById('find');
 const hint = document.getElementById('hint');
 const result = document.getElementById('result');
+const date = document.getElementById('date');
 
 /* --- typewriter placeholder: teaches people what to type --- */
 const samples = [
@@ -40,5 +41,8 @@ typeLoop();
 /* --- uppercase + tidy spacing as they type --- */
 input.addEventListener('input', () => {
   input.value = input.value.toUpperCase().replace(/\s+/g, ' ');
-  clearState();
 });
+
+/* --- getting dynamic year for footer --- */
+const year = new Date().getFullYear();
+date.textContent = year;
