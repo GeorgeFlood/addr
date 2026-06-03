@@ -56,18 +56,40 @@ findBtn.addEventListener('click', async () => {
   const data = await res.json();
   const addresses = data.data.addresses;
 
+  ///create the element we'll add the street name to
+  const addressDiv = document.createElement('div');
+  addressDiv.className = 'address-div';
+  result.append(addressDiv);
+  const streetName = document.createElement('h3');
+  addressDiv.append(streetName);
+  const cityPostCode = document.createElement('h3');
+  addressDiv.append(cityPostCode);
+  let selectedAddress;
+
+  /// create the UL element to append each address into
   const addressUL = document.createElement('ul');
   addressUL.className = 'address-ul';
   result.append(addressUL);
 
   addresses.forEach(address => {
-    const addressLI = document.createElement('li');
-    addressLI.className = 'address-li';
+    const splitAddress = address.split(',');
 
-    addressLI.textContent = address;
-    addressUL.append(addressLI);
+    streetName.textContent = splitAddress[1];
+    cityPostCode.textContent = `${splitAddress[2]}, ${splitAddress[3]}`;
+
+    const doorNumber = document.createElement('li');
+    doorNumber.className = 'doorNumbers';
+    doorNumber.textContent = address.split(',')[0];
+    doorNumber.dataset.fullAddress = address;
+    addressUL.append(doorNumber);
     result.style.opacity = 1;
     searchBar.style.borderRadius = '14px 14px 0 0';
+
+    doorNumber.addEventListener('click', async e => {
+      selectedAddress = e.target.dataset;
+      result.textContent = selectedAddress.fullAddress;
+      console.log(selectedAddress);
+    });
   });
 });
 

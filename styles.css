@@ -219,12 +219,27 @@ button.find:disabled {
   font-weight: 500;
 }
 
-ul.address-ul {
+.address-div {
+  display: flex;
+  justify-content: space-between;
+}
+.address-ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 90%;
 }
 
-li.address-li {
+.doorNumbers {
   list-style: none;
-  margin: 20px 0;
+  padding: 5px 5px;
+  margin: 5px 5px;
+}
+
+li.doorNumbers:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #c1c1c1;
 }
 .additional {
   margin-top: 2rem;
