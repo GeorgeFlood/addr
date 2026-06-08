@@ -12,6 +12,40 @@ const samples = [
   'e.g. B33 8TH',
 ];
 
+/* ---variables global scope --- */
+let selectedAddress;
+const CopyBtn = document.createElement('button');
+
+/* --- function global scope --- */
+
+/* --- Clean selected address up --- */
+const cleanAddress = address => {
+  const addressSplit = address.fullAddress.split(',');
+
+  const cleanedAddress = addressSplit.map(el => {
+    return el.trim()[0].toUpperCase() + el.trim().slice(1).toLowerCase();
+  });
+
+  let houseNumber = cleanedAddress[0];
+  let street = cleanedAddress[1];
+  let city = cleanedAddress[2];
+  const postCode = addressSplit[3].toUpperCase();
+
+  const cleanedAddressString = `${houseNumber} ${street} <br>
+   ${city} <br>
+    ${postCode}`;
+  return cleanedAddressString;
+};
+/* --- copy address to clipboard --- */
+const copyAddress = async () => {
+  try {
+    await navigator.clipboard.writeText(selectedAddress.fullAddress);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+/* --- type writer effect on search bar --- */
 let s = 0,
   c = 0,
   deleting = false,
@@ -64,7 +98,6 @@ findBtn.addEventListener('click', async () => {
   addressDiv.append(streetName);
   const cityPostCode = document.createElement('h3');
   addressDiv.append(cityPostCode);
-  let selectedAddress;
 
   /// create the UL element to append each address into
   const addressUL = document.createElement('ul');
@@ -87,10 +120,25 @@ findBtn.addEventListener('click', async () => {
 
     doorNumber.addEventListener('click', async e => {
       selectedAddress = e.target.dataset;
-      result.textContent = selectedAddress.fullAddress;
       console.log(selectedAddress);
+      const selectedAddressDiv = document.createElement('div');
+      selectedAddressDiv.className = 'selectedAddressDiv';
+      result.textContent = '';
+      result.append(selectedAddressDiv);
+      const selectedAddressH2 = document.createElement('h2');
+      selectedAddressH2.className = 'selectedAddress';
+      selectedAddressH2.innerHTML = cleanAddress(selectedAddress);
+      selectedAddressDiv.append(selectedAddressH2);
+
+      CopyBtn.className = 'CopyBtn';
+      CopyBtn.innerHTML = 'Copy';
+      selectedAddressDiv.append(CopyBtn);
     });
   });
+});
+
+CopyBtn.addEventListener('click', () => {
+  copyAddress();
 });
 
 /* --- getting dynamic year for footer --- */

@@ -236,11 +236,30 @@ button.find:disabled {
   margin: 5px 5px;
 }
 
-li.doorNumbers:hover {
-  border-radius: 5px;
+li.doorNumbers {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 10px;
+  min-width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
   cursor: pointer;
-  background-color: #c1c1c1;
+  transition: 0.2s ease;
 }
+
+li.doorNumbers:hover {
+  background: #0b0c0e;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.selectedAddressDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
 .additional {
   margin-top: 2rem;
   padding: 1.4rem 1.6rem;
@@ -259,6 +278,45 @@ li.doorNumbers:hover {
   text-align: center;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/* layout: button sits under selected address */
+.selectedAddressDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  text-align: center;
+}
+
+.selectedAddress {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+button.CopyBtn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #000000;
+  background: #fff;
+  padding: 1.1rem 2.4rem;
+  border: solid 2px #fa5e62;
+  border-radius: 10px;
+  min-width: 12rem;
+  transition:
+    transform 0.12s ease,
+    opacity 0.18s ease,
+    background-color 0.18s ease;
+}
+
+button.CopyBtn:hover {
+  border: solid 2px #ef9fa1;
 }
 
 .feature-list {
